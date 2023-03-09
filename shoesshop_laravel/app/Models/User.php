@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -15,13 +14,17 @@ class User extends Eloquent implements AuthenticatableContract
     use HasApiTokens, HasFactory, Notifiable, Authenticatable;
 
     protected $connection =  'mongodb';
-    protected $collection = 'users';
+    protected $collection = 'user';
+
+    public $timestamps = false;
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
+
     protected $fillable = [
+        'userId',
         'email',
         'password',
         'utype',
